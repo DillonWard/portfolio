@@ -1,15 +1,14 @@
-import Sidebar from "./components/Sidebar";
 import { Outlet } from "react-router-dom";
-
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 const Dashboard = () => {
   return (
-    <div className="h-screen grid grid-cols-4 w-screen">
-      <div className="col-span-1">
-        <Sidebar />
-      </div>
-      <div className="col-span-3 bg-[#FAFAFAFA]">
+    <div>
+      <Header />
+      <div className="min-h-[calc(100vh-128px)] flex flex-col bg-gray-50">
         <Outlet />
       </div>
+      <Footer />
     </div>
   );
 };

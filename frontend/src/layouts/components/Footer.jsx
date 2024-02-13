@@ -1,18 +1,27 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faFile } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { Tooltip } from "react-tooltip";
 
-const copyEmail = () =>
-  navigator.clipboard.writeText(import.meta.env.VITE_EMAIL_ADDRESS);
-
 const Footer = () => {
+  const urls = {
+    linkedin: import.meta.env.VITE_LINKEDIN_URL,
+    github: import.meta.env.VITE_GITHUB_URL,
+    email: import.meta.env.VITE_EMAIL_ADDRESS,
+  };
+
+  const copyEmail = () => navigator.clipboard.writeText(urls["email"]);
+
+  const openUrl = (url) => {
+    window.open(urls[url], "_blank");
+  };
+
   return (
-    <div className="bg-slate-800 h-16 py-10 px-6 flex flex-col">
-      <div className="text-center inset-x-0 bottom-0 mt-auto">
+    <div className="bg-slate-800 min-h-16 flex items-center justify-center">
+      <div className="text-center">
         <Tooltip id="email-tooltip" />
         <FontAwesomeIcon
-          onClick={copyEmail}
+          onClick={() => copyEmail}
           data-tooltip-id="email-tooltip"
           data-tooltip-content="Copy email address"
           icon={faEnvelope}
@@ -27,6 +36,7 @@ const Footer = () => {
           icon={faGithub}
           className="hover:cursor-pointer mx-2 bg-[#F1ECE1] border rounded-full p-1 text-slate-800"
           size="xl"
+          onClick={() => openUrl("github")}
         />
 
         <Tooltip id="linkedin-tooltip" />
@@ -36,15 +46,7 @@ const Footer = () => {
           icon={faLinkedin}
           className="hover:cursor-pointer mx-2 bg-[#F1ECE1] border rounded-full p-1 text-slate-800"
           size="xl"
-        />
-
-        <Tooltip id="cv-tooltip" />
-        <FontAwesomeIcon
-          data-tooltip-id="cv-tooltip"
-          data-tooltip-content="Download CV"
-          icon={faFile}
-          className="hover:cursor-pointer mx-2 bg-[#F1ECE1] border rounded-full p-1 text-slate-800"
-          size="xl"
+          onClick={() => openUrl("linkedin")}
         />
       </div>
     </div>
