@@ -18,7 +18,7 @@ const GetExperiences = app.get("/", async (req, res) => {
   }
 });
 
-const CreateExperiences = app.post("/", async (req, res) => {
+const CreateExperience = app.post("/", async (req, res) => {
   const client = new Client(process.env.CONNECTION_URL);
   let keys = [];
   let values = [];
@@ -45,7 +45,7 @@ const CreateExperiences = app.post("/", async (req, res) => {
   }
 });
 
-const UpdateExperiences = app.put("/:id", async (req, res) => {
+const UpdateExperience = app.put("/:id", async (req, res) => {
   const client = new Client(process.env.CONNECTION_URL);
   let entries = [];
   for (const [key, value] of Object.entries(req.body)) {
@@ -67,7 +67,7 @@ const UpdateExperiences = app.put("/:id", async (req, res) => {
   }
 });
 
-const DeleteExperiences = app.delete("/:id", async (req, res) => {
+const DeleteExperience = app.delete("/:id", async (req, res) => {
   const client = new Client(process.env.CONNECTION_URL);
 
   try {
@@ -87,7 +87,7 @@ const DeleteExperiences = app.delete("/:id", async (req, res) => {
 
 module.exports = [
   GetExperiences,
-  CreateExperiences,
-  UpdateExperiences,
-  DeleteExperiences,
+  CreateExperience,
+  UpdateExperience,
+  DeleteExperience,
 ];

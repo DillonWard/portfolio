@@ -18,7 +18,7 @@ const GetProjects = app.get("/", async (req, res) => {
   }
 });
 
-const CreateProjects = app.post("/", async (req, res) => {
+const CreateProject = app.post("/", async (req, res) => {
   const client = new Client(process.env.CONNECTION_URL);
   let keys = [];
   let values = [];
@@ -45,7 +45,7 @@ const CreateProjects = app.post("/", async (req, res) => {
   }
 });
 
-const UpdateProjects = app.put("/:id", async (req, res) => {
+const UpdateProject = app.put("/:id", async (req, res) => {
   const client = new Client(process.env.CONNECTION_URL);
   let entries = [];
   for (const [key, value] of Object.entries(req.body)) {
@@ -73,7 +73,7 @@ const UpdateProjects = app.put("/:id", async (req, res) => {
   }
 });
 
-const DeleteProjects = app.delete("/:id", async (req, res) => {
+const DeleteProject = app.delete("/:id", async (req, res) => {
   const client = new Client(process.env.CONNECTION_URL);
 
   try {
@@ -91,4 +91,4 @@ const DeleteProjects = app.delete("/:id", async (req, res) => {
   }
 });
 
-module.exports = [GetProjects, CreateProjects, UpdateProjects, DeleteProjects];
+module.exports = [GetProjects, CreateProject, UpdateProject, DeleteProject];
