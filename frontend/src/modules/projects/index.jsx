@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import { Component } from "react";
 import { connect } from "react-redux";
-import { fetchProjects } from "./store";
 class Projects extends Component {
   render() {
     return (

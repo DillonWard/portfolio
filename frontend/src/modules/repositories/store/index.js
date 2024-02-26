@@ -17,7 +17,7 @@ const repositoriesStore = createSlice({
   initialState: {
     loading: true,
     error: null,
-    experiences: [],
+    repositories: [],
   },
   reducers: {
     setRepositories: (state, action) => [...state, action.payload],
@@ -27,7 +27,7 @@ const repositoriesStore = createSlice({
       state.loading = true;
     });
     builder.addCase(fetchRepositories.fulfilled, (state, action) => {
-      state.experiences = action.payload;
+      state.repositories = action.payload;
       state.loading = false;
     });
     builder.addCase(fetchRepositories.rejected, (state, action) => {

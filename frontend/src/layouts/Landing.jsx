@@ -16,6 +16,7 @@ const Portfolio = () => {
   const projectsElement = useRef(null);
   const experienceElement = useRef(null);
   const infoElement = useRef(null);
+  const githubElement = useRef(null);
 
   const useIsInViewport = (ref) => {
     const [isIntersecting, setIsIntersecting] = useState(false);
@@ -43,10 +44,14 @@ const Portfolio = () => {
   const projectsInView = useIsInViewport(projectsElement);
   const experienceInView = useIsInViewport(experienceElement);
   const infoInView = useIsInViewport(infoElement);
+  const githubInView = useIsInViewport(githubElement);
 
   const selectInfo = infoInView;
   const selectExperience = !infoInView && experienceInView;
-  const selectProjects = !experienceInView && !infoInView & projectsInView;
+  const selectProjects =
+    !experienceInView && !infoInView & !githubInView && projectsInView;
+  const selectGithub = !experienceInView && !infoInView & githubInView;
+
   const navItems = [
     { title: "Info", control: selectInfo, element: infoElement },
     {
@@ -55,6 +60,7 @@ const Portfolio = () => {
       element: experienceElement,
     },
     { title: "Projects", control: selectProjects, element: projectsElement },
+    { title: "Github Overview", control: selectGithub, element: githubElement },
   ];
 
   return (
@@ -127,7 +133,7 @@ const Portfolio = () => {
             </div>
           </div>
           <div className="col-span-6 py-20 px-10 space-y-14">
-            <div style={{ "--xyz-opacity": 0 }}>
+            <div style={{ "--xyz-opacity": 0 }} className="space-y-10">
               <div ref={infoElement}>
                 <Info />
               </div>
@@ -137,7 +143,9 @@ const Portfolio = () => {
               <div ref={projectsElement}>
                 <Projects />
               </div>
-              <div>{/* <Repositories /> */}</div>
+              <div ref={githubElement}>
+                <Repositories />
+              </div>
             </div>
           </div>
         </div>

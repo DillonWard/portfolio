@@ -1,47 +1,49 @@
 import PropTypes from "prop-types";
 import { Component } from "react";
 import { connect } from "react-redux";
-import { Chart } from "chart.js";
-import { fetchRepositories } from "./store";
+import { Pie } from "react-chartjs-2";
 
 class Repositories extends Component {
+  getChartData(data) {
+    let languages = data.map((item) => item.language).filter((n) => n);
+    let chartData = {};
+
+    languages.map((item) => {
+      chartData[item] == undefined
+        ? (chartData[item] = 1)
+        : (chartData[item] += 1);
+    });
+    return {
+      labels: Object.keys(chartData),
+      datasets: [{ data: Object.values(chartData) }],
+    };
+  }
   render() {
     return (
       <div>
         <div className="text-center">
-          <p className="text-2xl font-medium">Work Experience</p>
+          <p className="text-2xl font-medium">Github Overview</p>
           <hr className="m-4 border border-[#F1ECE1]" />
         </div>
-        <div className="space-y-4">
-          <canvas id="repos" width="400" height="400"></canvas>
+        <div className="flex items-center justify-center">
+          <div className="-m-10 h-[600px] w-[600px]">
+            <Pie
+              className="m-0"
+              data={this.getChartData(this.props.repositories)}
+              options={{
+                plugins: {
+                  legend: {
+                    position: "left",
+                  },
+                },
+              }}
+            />
+          </div>{" "}
         </div>
       </div>
     );
   }
 }
-const ctx = document.getElementById("repos");
-console.log(ctx);
-
-new Chart(ctx, {
-  type: "bar",
-  data: {
-    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-    datasets: [
-      {
-        label: "# of Votes",
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1,
-      },
-    ],
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true,
-      },
-    },
-  },
-});
 
 const mapStatetoProps = (state) => {
   const { repositories, loading, error } = state.repositories;
