@@ -9,4 +9,13 @@
   .zoom:hover {
     transform: scale(1.1);
   }
+      
+  @layer utilities{
+    .nav-line > hr {
+      width: 40px;
+      /* margin-left: 5%; */
+      border-top: 1px solid #F1ECE1;
+      transition: width 0.2s ease;
+      }
   
+  }
