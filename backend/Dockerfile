@@ -1,13 +1,23 @@
-FROM node:18-alpine
+FROM python:3.12-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-COPY package.json .
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        build-essential \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN npm install
+COPY requirements.txt /app/
 
-COPY . .
+RUN pip install --no-cache-dir -r requirements.txt
 
-EXPOSE 3000
+COPY . /app/
 
-CMD [ "npm", "run", "dev" ]
+RUN python manage.py migrate
+
+EXPOSE 8000
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

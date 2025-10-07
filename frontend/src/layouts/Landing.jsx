@@ -91,7 +91,7 @@ const Portfolio = () => {
                 </div>
 
                 <p className="pt-5 text-base text-[#F1ECE1]">
-                  With up to 5 years of experience, I have a proven track record
+                  With up to 6+ years of experience, I have a proven track record
                   that showcases a willingness to adapt to any technology stack,
                   and an ability to learn new technologies
                 </p>

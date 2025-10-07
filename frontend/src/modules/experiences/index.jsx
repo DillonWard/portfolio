@@ -5,7 +5,8 @@ import { format, intervalToDuration } from "date-fns";
 
 class Experiences extends Component {
   intervalDuration(start, end) {
-    const { months, years } = intervalToDuration({ start, end });
+    const endDate = end || new Date();
+    const { months, years } = intervalToDuration({ start, end: endDate });
     if (years && months) return `${years}y, ${months}m`;
     else if (years && !months) return `${years}y`;
     else return `${months}m`;
@@ -27,7 +28,7 @@ class Experiences extends Component {
               >
                 <div className="col-span-1">
                   {format(experience.start_date, "MMM, yyyy")} -{" "}
-                  {format(experience.end_date, "MMM, yyyy")}
+                  {experience.end_date ? format(experience.end_date, "MMM, yyyy") : "Present"}
                   <span className="text-slate-600">
                     {" "}
                     (

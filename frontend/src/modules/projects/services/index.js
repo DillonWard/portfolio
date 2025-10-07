@@ -2,7 +2,7 @@ import { httpClient } from "@Plugins/axios";
 
 export async function getProjects() {
   try {
-    const { data } = await httpClient.get("/projects");
+    const { data } = await httpClient.get("/projects/get-projects/");
     return { data };
   } catch (error) {
     return { error };
