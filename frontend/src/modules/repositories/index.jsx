@@ -22,23 +22,29 @@ class Repositories extends Component {
     return (
       <div>
         <div className="text-center">
-          <p className="text-2xl font-medium">Github Overview</p>
-          <hr className="m-4 border border-[#F1ECE1]" />
+          <p className="text-xl sm:text-2xl font-medium">Github Overview</p>
+          <hr className="mx-auto mt-4 mb-6 border border-[#F1ECE1] w-full max-w-md" />
         </div>
-        <div className="flex items-center justify-center">
-          <div className="-m-10 h-[600px] w-[600px]">
+        <div className="flex items-center justify-center px-4">
+          <div className="w-full max-w-[300px] sm:max-w-[400px] lg:max-w-[600px] h-[300px] sm:h-[400px] lg:h-[600px]">
             <Pie
               className="m-0"
               data={this.getChartData(this.props.repositories)}
               options={{
+                responsive: true,
+                maintainAspectRatio: true,
                 plugins: {
                   legend: {
-                    position: "left",
+                    position: window.innerWidth < 768 ? "bottom" : "left",
+                    labels: {
+                      fontSize: window.innerWidth < 768 ? 10 : 12,
+                      boxWidth: window.innerWidth < 768 ? 10 : 12,
+                    },
                   },
                 },
               }}
             />
-          </div>{" "}
+          </div>
         </div>
       </div>
     );

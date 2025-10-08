@@ -1,7 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import Remote from "@/assets/remote.jpeg";
-import HPE from "@/assets/hpe.jpeg";
-import AKKA from "@/assets/akka.jpeg";
 import { getExperiences } from "../services";
 
 export const fetchExperiences = createAsyncThunk(

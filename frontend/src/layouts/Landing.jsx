@@ -66,14 +66,14 @@ const Portfolio = () => {
   return (
     <div className="min-h-screen flex flex-col bg-slate-800">
       <XyzTransition appear xyz="fade-100%">
-        <div className="grid grid-cols-9 text-[#F1ECE1] gap-10">
-          <div className="col-start-2 col-span-2 mx-auto">
-            <div className="py-20 sticky top-2 h-[80vh]">
-              <img src={Profile} className="rounded-full h-52 w-52" />
-              <div>
-                <div className="text-2xl">
+        <div className="grid grid-cols-1 lg:grid-cols-9 text-[#F1ECE1] gap-6 lg:gap-10">
+          <div className="lg:col-start-2 lg:col-span-2 mx-auto">
+            <div className="py-10 lg:py-20 lg:sticky lg:top-2 lg:h-[80vh]">
+              <img src={Profile} className="rounded-full h-32 w-32 sm:h-40 sm:w-40 lg:h-52 lg:w-52 mx-auto lg:mx-0" />
+              <div className="text-center lg:text-left">
+                <div className="text-xl sm:text-2xl">
                   <p className="py-1">Hi, my name is</p>
-                  <p className="text-5xl py-1">Dillon Ward</p>
+                  <p className="text-3xl sm:text-4xl lg:text-5xl py-1">Dillon Ward</p>
                   <TypeIt
                     getBeforeInit={(instance) => {
                       instance
@@ -90,13 +90,13 @@ const Portfolio = () => {
                   />
                 </div>
 
-                <p className="pt-5 text-base text-[#F1ECE1]">
+                <p className="pt-5 text-sm sm:text-base text-[#F1ECE1]">
                   With up to 6+ years of experience, I have a proven track record
                   that showcases a willingness to adapt to any technology stack,
                   and an ability to learn new technologies
                 </p>
-                <div className="py-10">
-                  <ul className="capitalize space-y-4">
+                <div className="py-6 lg:py-10">
+                  <ul className="capitalize space-y-3 lg:space-y-4 hidden lg:block">
                     {navItems.map(({ title, control, element }, navIndex) => {
                       return (
                         <li
@@ -108,15 +108,15 @@ const Portfolio = () => {
                           }
                         >
                           <span
-                            className={`hover:nav-line hover:text-[#F1ECE1] cursor-pointer flex flex-row ${
+                            className={`hover:nav-line hover:text-[#F1ECE1] cursor-pointer flex flex-row text-sm lg:text-base ${
                               control ? "text-[#F1ECE1]" : "text-gray-400"
                             }`}
                           >
                             <hr
                               className={`mx-2 my-auto ${
                                 control
-                                  ? "w-10 border-[#F1ECE1]"
-                                  : "w-5 border-gray-400"
+                                  ? "w-8 lg:w-10 border-[#F1ECE1]"
+                                  : "w-4 lg:w-5 border-gray-400"
                               } duration-200`}
                             />
                             {title}
@@ -127,12 +127,12 @@ const Portfolio = () => {
                   </ul>
                 </div>
               </div>
-              <div className="absolute bottom-10">
+              <div className="lg:absolute lg:bottom-10 mt-6 lg:mt-0">
                 <IconsList />
               </div>
             </div>
           </div>
-          <div className="col-span-6 py-20 px-10 space-y-14">
+          <div className="lg:col-span-6 py-10 lg:py-20 px-4 sm:px-6 lg:px-10 space-y-10 lg:space-y-14">
             <div style={{ "--xyz-opacity": 0 }} className="space-y-10">
               <div ref={infoElement}>
                 <Info />

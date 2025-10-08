@@ -16,21 +16,22 @@ class Experiences extends Component {
     return (
       <div className="text-[#F1ECE1]">
         <div className="text-center">
-          <p className="text-2xl font-medium">Work Experience</p>
-          <hr className="m-4 border border-[#F1ECE1]" />
+          <p className="text-xl sm:text-2xl font-medium">Work Experience</p>
+          <hr className="mx-auto mt-4 mb-6 border border-[#F1ECE1] w-full max-w-md" />
         </div>
-        <div className="space-y-4">
+        <div className="space-y-4 sm:space-y-6">
           {this.props.experiences.map((experience, index) => {
             return (
               <div
                 key={index}
-                className="rounded p-4 grid grid-cols-4 hover:bg-slate-700 duration-75"
+                className="rounded-lg p-4 sm:p-6 grid grid-cols-1 lg:grid-cols-4 gap-4 lg:gap-0 hover:bg-slate-700 duration-75 border border-slate-700/50"
               >
-                <div className="col-span-1">
-                  {format(experience.start_date, "MMM, yyyy")} -{" "}
-                  {experience.end_date ? format(experience.end_date, "MMM, yyyy") : "Present"}
-                  <span className="text-slate-600">
-                    {" "}
+                <div className="lg:col-span-1">
+                  <div className="text-sm sm:text-base">
+                    {format(experience.start_date, "MMM, yyyy")} -{" "}
+                    {experience.end_date ? format(experience.end_date, "MMM, yyyy") : "Present"}
+                  </div>
+                  <span className="text-slate-600 text-xs sm:text-sm">
                     (
                     {this.intervalDuration(
                       experience.start_date,
@@ -39,11 +40,11 @@ class Experiences extends Component {
                     )
                   </span>
                 </div>
-                <div className="col-span-3 space-y-1">
-                  <p className="text-lg font-medium">{experience.title}</p>
-                  <p>{experience.company}</p>
-                  <p> {experience.location}</p>
-                  <p>{experience.description}</p>
+                <div className="lg:col-span-3 space-y-2 sm:space-y-3">
+                  <p className="text-lg sm:text-xl font-medium">{experience.title}</p>
+                  <p className="text-sm sm:text-base text-gray-300">{experience.company}</p>
+                  <p className="text-sm sm:text-base text-gray-300">{experience.location}</p>
+                  <p className="text-sm sm:text-base leading-relaxed">{experience.description}</p>
                 </div>
               </div>
             );

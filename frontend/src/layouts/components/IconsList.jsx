@@ -25,8 +25,8 @@ const IconsList = () => {
           data-tooltip-id="email-tooltip"
           data-tooltip-content="Copy email address"
           icon={faEnvelope}
-          className="hover:cursor-pointer mx-4 text-[#F1ECE1] rounded-full p-2"
-          size="xl"
+          className="hover:cursor-pointer mx-2 sm:mx-3 lg:mx-4 text-[#F1ECE1] rounded-full p-1 sm:p-2"
+          size={window.innerWidth < 640 ? "lg" : "xl"}
         />
 
         <Tooltip id="github-tooltip" />
@@ -34,8 +34,8 @@ const IconsList = () => {
           data-tooltip-id="github-tooltip"
           data-tooltip-content="Go to Github profile"
           icon={faGithub}
-          className="hover:cursor-pointer mx-4 text-[#F1ECE1] rounded-full p-2"
-          size="xl"
+          className="hover:cursor-pointer mx-2 sm:mx-3 lg:mx-4 text-[#F1ECE1] rounded-full p-1 sm:p-2"
+          size={window.innerWidth < 640 ? "lg" : "xl"}
           onClick={() => openUrl("github")}
         />
 
@@ -44,8 +44,8 @@ const IconsList = () => {
           data-tooltip-id="linkedin-tooltip"
           data-tooltip-content="Go to Linkedin profile"
           icon={faLinkedin}
-          className="hover:cursor-pointer mx-4 text-[#F1ECE1] rounded-full p-2"
-          size="xl"
+          className="hover:cursor-pointer mx-2 sm:mx-3 lg:mx-4 text-[#F1ECE1] rounded-full p-1 sm:p-2"
+          size={window.innerWidth < 640 ? "lg" : "xl"}
           onClick={() => openUrl("linkedin")}
         />
       </div>
