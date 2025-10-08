@@ -31,7 +31,6 @@ const experienceStore = createSlice({
       state.loading = false;
     });
     builder.addCase(fetchExperiences.rejected, (state, action) => {
-      console.log(action.error);
       state.error = action.error;
     });
   },
