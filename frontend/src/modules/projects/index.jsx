@@ -13,7 +13,6 @@ class Projects extends Component {
         </div>
         <div className="space-y-4 sm:space-y-6 max-w-6xl mx-auto">
           {this.props.projects.map((project, index) => {
-            console.log(project);
             return (
               <div
                 key={index}
