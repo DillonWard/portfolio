@@ -66,7 +66,7 @@ const Portfolio = () => {
       element: experienceElement,
     },
     { title: "Projects", control: selectProjects, element: projectsElement },
-    { title: "Github Overview", control: selectGithub, element: githubElement },
+    { title: "Technology Overview", control: selectGithub, element: githubElement },
   ];
 
   return (
