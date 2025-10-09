@@ -9,7 +9,7 @@
 
 ```
 git clone https://github.com/DillonWard/portfolio.git
-cd infrastructure
+cd portfolio/infrastructure/
 docker compose build
 docker compose up
 ```
