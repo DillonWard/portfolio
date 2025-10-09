@@ -2,15 +2,27 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { Tooltip } from "react-tooltip";
+import { useState } from "react";
 
 const IconsList = () => {
+  const [emailTooltip, setEmailTooltip] = useState("Copy email address");
+
   const urls = {
     linkedin: import.meta.env.VITE_LINKEDIN_URL,
     github: import.meta.env.VITE_GITHUB_URL,
     email: import.meta.env.VITE_EMAIL_ADDRESS,
   };
 
-  const copyEmail = () => navigator.clipboard.writeText(urls["email"]);
+  const copyEmail = async () => {
+      await navigator.clipboard.writeText(urls["email"]);
+      setEmailTooltip("Copied!");
+  };
+
+  const handleEmailMouseLeave = () => {
+    setTimeout(() => {
+      setEmailTooltip("Copy email address");
+    }, 200);
+  };
 
   const openUrl = (url) => {
     window.open(urls[url], "_blank");
@@ -21,9 +33,10 @@ const IconsList = () => {
       <div className="text-center">
         <Tooltip id="email-tooltip" />
         <FontAwesomeIcon
-          onClick={() => copyEmail}
+          onClick={() => copyEmail()}
+          onMouseLeave={handleEmailMouseLeave}
           data-tooltip-id="email-tooltip"
-          data-tooltip-content="Copy email address"
+          data-tooltip-content={emailTooltip}
           icon={faEnvelope}
           className="hover:cursor-pointer mx-2 sm:mx-3 lg:mx-4 text-[#F1ECE1] rounded-full p-1 sm:p-2"
           size={window.innerWidth < 640 ? "lg" : "xl"}

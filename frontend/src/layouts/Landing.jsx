@@ -11,12 +11,17 @@ import { fetchExperiences } from "../modules/experiences/store";
 import { fetchProjects } from "../modules/projects/store";
 import { fetchRepositories } from "../modules/repositories/store";
 import { XyzTransition } from "@animxyz/react";
+import { intervalToDuration } from "date-fns";
 
 const Portfolio = () => {
   const projectsElement = useRef(null);
   const experienceElement = useRef(null);
   const infoElement = useRef(null);
   const githubElement = useRef(null);
+  const { years } = intervalToDuration({
+    start: new Date(2018, 7),
+    end: new Date(),
+  });
 
   const useIsInViewport = (ref) => {
     const [isIntersecting, setIsIntersecting] = useState(false);
@@ -29,6 +34,7 @@ const Portfolio = () => {
         ),
       []
     );
+
 
     useEffect(() => {
       observer.observe(ref.current);
@@ -91,7 +97,7 @@ const Portfolio = () => {
                 </div>
 
                 <p className="pt-5 text-sm sm:text-base text-[#F1ECE1]">
-                  With up to 6+ years of experience, I have a proven track record
+                  With up to {years}+ years of experience, I have a proven track record
                   that showcases a willingness to adapt to any technology stack,
                   and an ability to learn new technologies
                 </p>
