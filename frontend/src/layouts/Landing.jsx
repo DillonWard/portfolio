@@ -1,6 +1,6 @@
 import Profile from "@/assets/profile.jpeg";
-import Info from "./components/Info";
-import IconsList from "./components/IconsList";
+import { Info } from "./components/Info";
+import { IconsList } from "./components/IconsList";
 import Experiences from "@Modules/experiences";
 import Projects from "@Modules/projects";
 import Repositories from "@Modules/repositories";

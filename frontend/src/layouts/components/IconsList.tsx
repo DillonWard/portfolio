@@ -3,9 +3,11 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { Tooltip } from "react-tooltip";
 import { useState } from "react";
+import { FC } from "react";
 
-const IconsList = () => {
+export const IconsList: FC = () => {
   const [emailTooltip, setEmailTooltip] = useState("Copy email address");
+  type UrlKey = "linkedin" | "github" | "email";
 
   const urls = {
     linkedin: import.meta.env.VITE_LINKEDIN_URL,
@@ -13,21 +15,20 @@ const IconsList = () => {
     email: import.meta.env.VITE_EMAIL_ADDRESS,
   };
 
-  const copyEmail = async () => {
-      await navigator.clipboard.writeText(urls["email"]);
-      setEmailTooltip("Copied!");
-  };
+  const copyEmail = async (): Promise<void> => {
+    await navigator.clipboard.writeText(urls["email"]);
+    setEmailTooltip("Copied!");
+  }
 
-  const handleEmailMouseLeave = () => {
+  const handleEmailMouseLeave = (): void => {
     setTimeout(() => {
       setEmailTooltip("Copy email address");
     }, 200);
   };
 
-  const openUrl = (url) => {
+  const openUrl = (url: UrlKey): void => {
     window.open(urls[url], "_blank");
   };
-
   return (
     <div className="flex items-center justify-center">
       <div className="text-center">
@@ -64,6 +65,4 @@ const IconsList = () => {
       </div>
     </div>
   );
-};
-
-export default IconsList;
+} 
