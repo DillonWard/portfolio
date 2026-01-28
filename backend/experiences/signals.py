@@ -7,11 +7,20 @@ from datetime import date
 def create_default_experiences(sender, **kwargs):
     if not Experience.objects.exists():
         Experience.objects.create(
+            title="Freelance Software Engineer",
+            company="BARDKIN",
+            location="Remote",
+            start_date=date(2025, 12, 1),
+            end_date=None,
+            description="Freelance software engineer specializing in full stack development, with the flexibility to work frontend or backend depending on the project.",
+        )
+
+        Experience.objects.create(
             title="Senior Full Stack Developer",
             company="Stellar",
             location="Bordeaux, France",
             start_date=date(2024, 4, 1),
-            end_date=None,
+            end_date=date(2025, 11, 1),
             description="Full Stack Development integrating custom modules into OpenWISP, an open source technology, and development of a customer facing website.",
         )
         

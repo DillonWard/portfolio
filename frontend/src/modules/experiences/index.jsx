@@ -14,12 +14,12 @@ class Experiences extends Component {
 
   render() {
     return (
-      <div className="text-[#F1ECE1]">
+      <div className="text-[#F1ECE1] px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <p className="text-xl sm:text-2xl font-medium">Work Experience</p>
           <hr className="mx-auto mt-4 mb-6 border border-[#F1ECE1] w-full max-w-md" />
         </div>
-        <div className="space-y-4 sm:space-y-6">
+        <div className="space-y-4 sm:space-y-6 max-w-6xl mx-auto">
           {this.props.experiences.map((experience, index) => {
             return (
               <div
